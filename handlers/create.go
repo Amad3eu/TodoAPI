@@ -1,12 +1,18 @@
 package handlers
 
-import "fmt"
+import (
+	"fmt"
+	"http"
+	"json"
+	"log"
+	"models"
+)
 
 func Create(w http.ResponseWriter, r *http.Request) {
 	var todo models.Todo
 	err := json.NewDecoder(r.Body).Decode(&todo)
 	if err != nil {
-		log.println("Error decoding JSON: %v", err)
+		log.Printf("Error decoding JSON: %v", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
