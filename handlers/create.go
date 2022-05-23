@@ -1,5 +1,6 @@
 package handlers
 
+import "fmt"
 
 func Create(w http.ResponseWriter, r *http.Request) {
 	var todo models.Todo
@@ -13,16 +14,15 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	id, err := models.insert(todo)
 	var resp map[string]any
 
-	if err != nil{
+	if err != nil {
 		resp = map[string]any{
-			"Error":true,
+			"Error":   true,
 			"Message": fmt.Sprintf("Ocorreu um erro ao tentar inserir: %v", err),
 		}
-	}
-	else{
+	} else {
 		resp = map[string]any{
-			"Error":false,
-			"Message":("Todo inserido com sucesso ID:%d", id),
+			"Error":   false,
+			"Message": fmt.Sprintf("Todo inserido com sucesso ID: %d", id),
 		}
 	}
 
