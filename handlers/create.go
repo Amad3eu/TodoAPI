@@ -1,5 +1,6 @@
 package handlers
 
+
 func Create(w http.ResponseWriter, r *http.Request) {
 	var todo models.Todo
 	err := json.NewDecoder(r.Body).Decode(&todo)
@@ -9,25 +10,22 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	conn, err := db.OpenConnection()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	defer conn.Close()
+	id, err := models.insert(todo)
+	var resp map[string]any
 
-	res, err := conn.Exec(`INSERT INTO todos (title, description, done) VALUES ($1, $2, $3)`, todo.Title, todo.Description, todo.Done)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+	if err != nil{
+		resp = map[string]any{
+			"Error":true,
+			"Message": fmt.Sprintf("Ocorreu um erro ao tentar inserir: %v", err),
+		}
 	}
-
-	id, err := res.LastInsertId()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+	else{
+		resp = map[string]any{
+			"Error":false,
+			"Message":("Todo inserido com sucesso ID:%d", id),
+		}
 	}
 
-	todo.ID = id
-	json.NewEncoder(w).Encode(todo)
+	w.header().Add("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resp)
 }
