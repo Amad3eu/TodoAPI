@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/aprendagolang/api-psql/configs"
+	"github.com/Amad3eu/api-pstg-go/configs"
 	
 	_ "github.com/lib/pq"
 )
