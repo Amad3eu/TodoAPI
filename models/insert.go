@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/aprendagolang/api-psql/db"
+	"github.com/Amad3eu/api-pstg-go/db"
 )
 
 func Insert(todo Todo)(id int64, err error){
