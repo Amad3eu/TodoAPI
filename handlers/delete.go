@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/aprendagolang/api-psql/models"
+	"github.com/Amad3eu/api-pstg-go/models"
 )
 
 func Delete(w http.ResponseWriter, r *http.request) {
