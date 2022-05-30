@@ -6,7 +6,7 @@ import(
 	"log"
 	"json"
 
-	"github.com/aprendagolang/api-psql/models"
+	"github.com/Amad3eu/api-pstg-go/models"
 )
 
 func List(w http.ResponseWritter, r *http.Request){
