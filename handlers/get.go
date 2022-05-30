@@ -3,7 +3,7 @@ package handlers
 
 import ("net/http"
  "strconv"
-"github.com/aprendagolang/api-pqsql/models"
+"github.com/Amad3eu/api-pstg-go/models"
 )
 
 func Get(w http.ResponseWritter, r *http.Request){
