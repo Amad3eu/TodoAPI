@@ -1,11 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"github.com/Amad3eu/api-pstg-go/configs"
+	"github.com/Amad3eu/api-pstg-go/handlers"
 	"net/http"
-
-	"github.com/aprendagolang/api-pqsql/configs"
-	"github.com/go-chi/chi/v5"
 )
 
 func main() {
@@ -13,12 +11,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-r := chi.NewRouter()
-r.Post("/", handlers.Create)
-r.Put("/{id}", handlers.Update)
-r.Delete("/{id}", handlers.Delete)
-r.Get("/", handlers.List) 
-r.get("/{id}", handlers.Get)
+	r := chi.NewRouter()
+	r.Post("/", handlers.Create)
+	r.Put("/{id}", handlers.Update)
+	r.Delete("/{id}", handlers.Delete)
+	r.Get("/", handlers.List)
+	r.get("/{id}", handlers.Get)
 
-http.ListenAndServe(fm.Sprintf("%s", configs.GetServerPort()), r)
+	http.ListenAndServe(fm.Sprintf("%s", configs.GetServerPort()), r)
 }

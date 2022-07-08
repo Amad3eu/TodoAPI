@@ -1,6 +1,6 @@
 package models
 
-import "github.com/Amad3eu/api-pstg/db"
+import "github.com/Amad3eu/api-pstg-go/db"
 
 func GetAll(id int64) (todos []Todo, err error){
 	conn, err, := db.OpenConnection()
