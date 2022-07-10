@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/Amad3eu/api-pstg-go/configs"
 	"github.com/Amad3eu/api-pstg-go/handlers"
-	"net/http"
+	http "net/http"
 )
 
 func main() {
